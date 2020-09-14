@@ -22,10 +22,16 @@ struct Node* newNode(int data){
 }
 
 
-//to find lowest common ancestor
+//to find lowest common ancestor...logic is that
+/*If the value of the current node is less than both n1 and n2, then LCA lies in the right subtree. 
+Call the recursive function for thr right subtree
+If the value of the current node is greater than both n1 and n2, then LCA lies in the left subtree. Call the recursive function for thr left subtree.
+If both the above cases are false then return the current node as LCA.*/
+
 struct Node* lca(Node*root,int n1,int n2){
 	if(root == NULL)
 	return NULL;
+	
 	
 	if(root->data > n1 and root->data > n2)
 	return lca(root->left,n1,n2);
@@ -57,7 +63,7 @@ int main() {
 	
 	struct Node *t = lca(root, n1, n2); 
 	
-	cout << "lca of the givren number is "<<t->data;
+	cout << "lca of the given number is "<<t->data;
 	
 	return 0;
 }
